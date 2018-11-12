@@ -4,7 +4,7 @@ import './todo.css';
 
 class ToDoList extends Component {
 
-    shouldComponentUpdate(nextProps, nextState){
+    shouldComponentUpdate(nextProps, nextState){        
         return this.props.ToDos!== nextProps.ToDos;
     }
 
@@ -20,8 +20,9 @@ class ToDoList extends Component {
                         RemoveToDoItem = {this.props.RemoveToDoItem}
                         CheckToDoItem = {this.props.CheckToDoItem}/>)
                 )} */}
-
-                {this.props.ToDos.map(
+                
+                {                    
+                    this.props.ToDos.map(                    
                     (data, index) => (                    
                         <ToDoElement key={ "ToDoElement"+index } liKey={index} ToDo={data}
                         RemoveToDoItem = {this.props.RemoveToDoItem}
