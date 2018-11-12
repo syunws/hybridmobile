@@ -1,0 +1,7 @@
+
+App
+
+todolist
+    - input
+    - list :state (todolist)
+        -element : prop (todolist)
