@@ -30,8 +30,9 @@ export default function counter (state=initState,action){
         case ADDTODO:
             return{
                 ...state,    
-                toDo:'',               
-                todos: state.todos
+                todos: state.todos.concat(state.toDo),
+                toDo:''               
+                
             };
         case REMOVETODO:
             return{

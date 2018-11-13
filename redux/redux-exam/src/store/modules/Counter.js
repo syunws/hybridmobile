@@ -1,7 +1,7 @@
 
 //액션 정의
 const INCREMENT = 'INCREMENT'; // counetr/INCREMENT 붙여주면 프로젝트가 커졌을때 액션명이 중복 되는 것을 방지할 수 있음
-const DECREMENT = 'DECREMENT'
+const DECREMENT = 'DECREMENT';
 
 //액션 생성 함수
 export const increment = ()=> ({type:INCREMENT});

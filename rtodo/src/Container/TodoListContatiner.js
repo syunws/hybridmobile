@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
 import ToDoList from '../Component/ToDoList';
 import {connect} from 'react-redux';
-import {changeInputTodo,addTodo} from '../store/modules/todosReducer'
+import {doneCheckTodo,removeTodo} from '../store/modules/todosReducer'
 
 
-RemoveToDoItem = () =>{
-
-}
 
 
 class TodoListContatiner extends Component {
+
+    RemoveToDoItem = (id) => {
+        this.props.removeTodo(id);
+    }
+    
+    CheckToDoItem = (id) =>{
+        this.props.doneCheckTodo(id);
+    }
+    
     render() {
         return (
             <ToDoList                 
@@ -30,8 +36,8 @@ const mapStateToProps = ({todosReducer}) => (
 
 const mapDispatchToProps = dispatch => (
     {
-        changeInputTodo: (value)=>dispatch(changeInputTodo(value)),
-        addTodo: ()=>dispatch(addTodo())
+        removeTodo: (id)=>dispatch(removeTodo(id)),
+        doneCheckTodo: (id)=>dispatch(doneCheckTodo(id))
 
     }
 );

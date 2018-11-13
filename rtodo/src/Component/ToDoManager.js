@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import ToDoList from './ToDoList';
 import InputTodo from './InputTodo';
+
+import TodoInputContainer from '../Container/TodoInputContainer'
+import TodoListContatiner from '../Container/TodoListContatiner'
 import './todo.css';
 import Axios from 'axios';
 
 class ToDoManager extends Component {
 
+    /*
     state = {
         todo:'',
         todos:[]
     }
+
     NewToDoInput = (newTodo) =>{
      
         Axios.post('http://localhost:8080/todos', {todo:newTodo})
@@ -67,18 +72,24 @@ class ToDoManager extends Component {
             todo:''
         });
     }
+    */
+
     render() {
-        console.log("aaaa");
+        
         return (
             <div className="todo-list-template">
                 <div className="title">
                     My To Do List
                 </div>
-                <InputTodo NewToDoInput={this.NewToDoInput}/>
+                {/* <InputTodo NewToDoInput={this.NewToDoInput}/>
                 <ToDoList                 
                 ToDos = {this.state.todos}
                 RemoveToDoItem={this.RemoveToDoItem} 
-                CheckToDoItem ={this.CheckToDoItem} />
+                CheckToDoItem ={this.CheckToDoItem} /> */}
+                <TodoInputContainer />
+                <TodoListContatiner />
+                
+                
             </div>
         );
     }

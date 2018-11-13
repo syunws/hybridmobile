@@ -3,11 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import rootReducers from './store/modules/index';
 import {Provider} from 'react-redux';
+// import loggerMiddleware from './lib/loggerMiddleware';
+import {createLogger} from 'redux-logger'
 
-const store = createStore(rootReducers); //합쳐진 reducer
+const logger = createLogger(); 
+
+const store = createStore(rootReducers, applyMiddleware(logger)); //합쳐진 reducer
 console.log(store.getState());
 
 ReactDOM.render(
