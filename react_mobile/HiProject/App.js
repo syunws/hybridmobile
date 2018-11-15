@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, Image, ScrollView, Button, TextInput, FlatList } from 'react-native';
+import { Platform, StyleSheet, Text, View, Image, ScrollView, Button, TextInput, FlatList, SectionList } from 'react-native';
 
 
 
@@ -22,28 +22,58 @@ type Props = {};
 export default class App extends Component<Props> {
 
   state = {
-    date :1,
-    text : ''
+    date: 1,
+    text: ''
   }
-  onPressButton = () =>{
+  onPressButton = () => {
     this.setState({
-      date: this.state.date +1
+      date: this.state.date + 1
     })
   }
 
   onChange = (name) => {
     this.setState({
-      text : name
+      text: name
     })
   }
   render() {
-    const todos= [
-      {todo:'리액트 공부하기'},
-      {todo:'먹기'},
-      {todo:'자기'},
-      {todo:'놀기'}
+    const todos = [
+      { todo: '리액트 공부하기' },
+      { todo: '먹기' },
+      { todo: '자기' },
+      { todo: '놀기' }
     ];
     return (
+      /*
+      <View style={{ flex: 1 }}>
+          <View style={{ flex: 1 }}>
+            <Text style={styles.red}>just red</Text>
+            <Text style={styles.bigblue}>just bigblue</Text>
+            <Text style={[styles.bigblue, styles.red]}>bigblue, then red</Text>
+            <Text style={[styles.red, styles.bigblue]}>red, then bigblue</Text>
+          </View>
+          <View style={{ flex: 1 }}>
+            <View style={{ flex: 1, backgroundColor: 'skyblue' }} />
+            <View style={{ flex: 2, backgroundColor: 'blue' }} />
+            <View style={{ flex: 3, backgroundColor: 'darkblue' }} />
+          </View>
+        </View>*/
+      <View style={{ flex: 1 }}>
+
+        <View style={{ height: 100, backgroundColor: 'green' }}>
+          <Text>nav Bar</Text>
+        </View>
+        <View style={{ flex: 1, flexDirection: 'row' }}>
+          <View style={{ flex: 1, backgroundColor: 'skyblue' }}></View>
+          <View style={{ flex: 1 }}>
+            <View style={{ flex: 1, backgroundColor: 'pink' }}></View>
+            <View style={{ flex: 1, backgroundColor: 'magenta' }}></View>
+          </View>
+        </View>
+      </View>
+
+
+      /*
       <ScrollView>
         <Hello></Hello>
         <Image
@@ -52,28 +82,54 @@ export default class App extends Component<Props> {
         />
         <Button onPress={this.onPressButton} title="눌러주세요" />
         <Text>{this.state.date}</Text>
-        <TextInput placeholder='이름을 입력해요' onChangeText={(name) => this.onChange(name)} /> 
-        <Text style={{padding:10, fontSize:50}}>{this.state.text}님 반갑습니다. </Text>
+        <TextInput placeholder='이름을 입력해요' onChangeText={(name) => this.onChange(name)} />
+        <Text style={{ padding: 10, fontSize: 50 }}>{this.state.text}님 반갑습니다. </Text>
 
-        <FlatList data = {todos} renderItem={({item}) => 
-        <Text>{item.todo}</Text> } keyExtractor = {(item, index) => item.toString()} />
+        <FlatList data={todos} renderItem={({ item }) =>
+          <Text>{item.todo}</Text>} keyExtractor={(item, index) => item.toString()} />
 
       </ScrollView>
+      */
     );
   }
 }
 
 class Hello extends Component {
-  render(){
+  render() {
     return (
       <View >
-        <Text style = {styles.instructions}> This is Hello Component </Text>
+        <Text style={styles.instructions}> This is Hello Component </Text>
+
+        <SectionList
+          sections={[
+            { title: 'Title1', data: ['item1', 'item2'] },
+            { title: 'Title2', data: ['item3', 'item4'] },
+            { title: 'Title3', data: ['item5', 'item6'] },
+          ]}
+          renderItem={({ item, index, section }) => <Text>{item}</Text>}
+          renderSectionHeader={({ section: { title } }) => (
+            <Text style={{ fontWeight: 'bold' }}>{title}</Text>
+          )}
+          keyExtractor={(item, index) => item + index}
+        />
+
+
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
+
+  bigblue: {
+    color: 'blue',
+    fontWeight: 'bold',
+    fontSize: 30,
+
+  },
+  red: {
+    color: 'red',
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
