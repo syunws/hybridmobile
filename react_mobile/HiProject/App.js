@@ -8,7 +8,7 @@
 
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, Image, ScrollView, Button, TextInput, FlatList, SectionList } from 'react-native';
-
+import TodoComponent from './TodoComponent';
 
 
 const instructions = Platform.select({
@@ -44,6 +44,8 @@ export default class App extends Component<Props> {
       { todo: '놀기' }
     ];
     return (
+
+      <TodoComponent></TodoComponent>
       /*
       <View style={{ flex: 1 }}>
           <View style={{ flex: 1 }}>
@@ -57,7 +59,7 @@ export default class App extends Component<Props> {
             <View style={{ flex: 2, backgroundColor: 'blue' }} />
             <View style={{ flex: 3, backgroundColor: 'darkblue' }} />
           </View>
-        </View>*/
+        </View>
       <View style={{ flex: 1 }}>
 
         <View style={{ height: 100, backgroundColor: 'green' }}>
@@ -71,7 +73,7 @@ export default class App extends Component<Props> {
           </View>
         </View>
       </View>
-
+*/
 
       /*
       <ScrollView>
