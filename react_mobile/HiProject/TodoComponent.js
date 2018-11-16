@@ -14,9 +14,10 @@ componentDidMount()
         if (request.readyState!==4) {
             return;
         }
-        if (request.state === 200)
+        
+        if (request.status === 200)
         {
-            Alert.alert('success',request.responseText);
+            //Alert.alert('success',request.responseText);
             this.setState({
                 isLoading:false,
                 todos:JSON.parse(request.responseText)
